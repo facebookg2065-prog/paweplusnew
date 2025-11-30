@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
 import { Button } from './Button';
 
@@ -9,6 +9,10 @@ export const Navbar: React.FC = () => {
   const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  // Mock checking if user is on a protected page or "logged in" for demo purposes
+  // In a real app, this would check auth state
+  const isDashboard = location.pathname.includes('/dashboard');
 
   return (
     <nav className="sticky top-0 z-50 bg-[#050505]/80 backdrop-blur-lg border-b border-gray-900">
@@ -35,12 +39,17 @@ export const Navbar: React.FC = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/login">
-            <Button variant="ghost">تسجيل الدخول</Button>
+          <Link to="/dashboard">
+             <Button variant={isDashboard ? "primary" : "ghost"} className="flex items-center gap-2">
+                <User size={18} />
+                <span>حسابي</span>
+             </Button>
           </Link>
-          <Link to="/register">
-             <Button variant="primary" className="!px-5">اشتراك</Button>
-          </Link>
+          {!isDashboard && (
+            <Link to="/login">
+              <Button variant="outline" className="!px-5 border-gray-700 text-gray-300">تسجيل الدخول</Button>
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -54,7 +63,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-[#0a0a0a] border-b border-gray-900 p-6 absolute w-full left-0 animate-in slide-in-from-top-5">
+        <div className="md:hidden bg-[#0a0a0a] border-b border-gray-900 p-6 absolute w-full left-0 top-20 animate-in slide-in-from-top-5 z-40">
           <div className="flex flex-col gap-4">
             {NAV_LINKS.map((link) => (
               <Link 
@@ -68,12 +77,12 @@ export const Navbar: React.FC = () => {
                 {link.label}
               </Link>
             ))}
+            <Link to="/dashboard" onClick={() => setIsOpen(false)} className="text-base font-bold py-2 text-gray-300">
+              حسابي
+            </Link>
             <div className="h-px bg-gray-800 my-2" />
             <Link to="/login" onClick={() => setIsOpen(false)}>
               <Button variant="secondary" fullWidth>تسجيل الدخول</Button>
-            </Link>
-            <Link to="/register" onClick={() => setIsOpen(false)}>
-              <Button variant="primary" fullWidth>اشتراك جديد</Button>
             </Link>
           </div>
         </div>

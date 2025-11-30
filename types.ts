@@ -2,6 +2,8 @@ export interface Product {
   id: string;
   title: string;
   description: string;
+  longDescription?: string;
+  features?: string[];
   price: number;
   imageUrl: string;
   rating: number;

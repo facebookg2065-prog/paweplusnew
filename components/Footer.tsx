@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bitcoin, Wallet, CreditCard } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   return (
@@ -16,17 +17,18 @@ export const Footer: React.FC = () => {
           <div>
             <h3 className="text-white font-bold mb-6 text-lg">روابط سريعة</h3>
             <ul className="space-y-4 text-gray-400">
-              <li><a href="#/" className="hover:text-red-500 transition-colors">الرئيسية</a></li>
-              <li><a href="#/publisher" className="hover:text-red-500 transition-colors">المنتجات</a></li>
-              <li><a href="#/about" className="hover:text-red-500 transition-colors">من نحن</a></li>
+              <li><Link to="/" className="hover:text-red-500 transition-colors">الرئيسية</Link></li>
+              <li><Link to="/products" className="hover:text-red-500 transition-colors">المنتجات</Link></li>
+              <li><Link to="/about" className="hover:text-red-500 transition-colors">من نحن</Link></li>
+              <li><Link to="/contact" className="hover:text-red-500 transition-colors">تواصل معنا</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-white font-bold mb-6 text-lg">الدعم القانوني</h3>
             <ul className="space-y-4 text-gray-400">
-              <li><a href="#/privacy" className="hover:text-red-500 transition-colors">سياسة الخصوصية</a></li>
-              <li><a href="#/terms" className="hover:text-red-500 transition-colors">الشروط والأحكام</a></li>
+              <li><Link to="/privacy" className="hover:text-red-500 transition-colors">سياسة الخصوصية</Link></li>
+              <li><Link to="/terms" className="hover:text-red-500 transition-colors">الشروط والأحكام</Link></li>
             </ul>
           </div>
         </div>

@@ -28,7 +28,7 @@ export const Home: React.FC = () => {
             </p>
             
             <div className="flex flex-wrap gap-4 mb-12">
-              <Link to="/publisher">
+              <Link to="/products">
                 <Button variant="primary" className="!px-8 !py-3 text-lg shadow-red-900/50">تصفح المنتجات</Button>
               </Link>
               <Link to="/about">
@@ -67,7 +67,7 @@ export const Home: React.FC = () => {
                 <p className="text-gray-500 text-sm">أدخل بياناتك للمتابعة إلى لوحة التحكم</p>
               </div>
 
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); window.location.href = '#/dashboard'; }}>
                 <Input placeholder="البريد الإلكتروني أو اسم المستخدم" />
                 <Input type="password" placeholder="كلمة المرور" />
                 
@@ -102,7 +102,7 @@ export const Home: React.FC = () => {
               <h2 className="text-3xl font-bold text-white mb-2">أحدث المنتجات</h2>
               <p className="text-gray-400">تصفح أحدث الإضافات إلى متجرنا الرقمي</p>
             </div>
-            <Link to="/publisher" className="text-red-500 hover:text-white transition-colors font-bold">
+            <Link to="/products" className="text-red-500 hover:text-white transition-colors font-bold">
               عرض الكل &larr;
             </Link>
           </div>
