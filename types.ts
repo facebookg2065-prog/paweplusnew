@@ -16,3 +16,10 @@ export enum PaymentMethod {
   PAYPAL = 'PayPal',
   PAYEER = 'Payeer'
 }
+
+export interface NavLinkItem {
+  label: string;
+  path: string;
+  icon?: any;
+  children?: NavLinkItem[];
+}

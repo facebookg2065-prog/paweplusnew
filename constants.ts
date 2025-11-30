@@ -1,4 +1,9 @@
-import { Product } from './types';
+import { Product, NavLinkItem } from './types';
+import { 
+  Home, Package, Info, Phone, 
+  Grid, Gamepad2, ShieldCheck, LayoutTemplate, Palette, 
+  Building2, FileText, Lock 
+} from 'lucide-react';
 
 export const PRODUCTS: Product[] = [
   {
@@ -47,10 +52,37 @@ export const PRODUCTS: Product[] = [
   }
 ];
 
-export const NAV_LINKS = [
-  { label: 'الرئيسية', path: '/' },
-  { label: 'المنتجات', path: '/products' },
-  { label: 'من نحن', path: '/about' },
-  { label: 'تواصل معنا', path: '/contact' },
-  // Dashboard and Login are handled separately in the Navbar
+export const NAV_LINKS: NavLinkItem[] = [
+  { 
+    label: 'الرئيسية', 
+    path: '/', 
+    icon: Home 
+  },
+  {
+    label: 'المنتجات',
+    path: '/products',
+    icon: Package,
+    children: [
+      { label: 'جميع المنتجات', path: '/products', icon: Grid },
+      { label: 'ألعاب', path: '/products?category=Games', icon: Gamepad2 },
+      { label: 'حماية', path: '/products?category=Security', icon: ShieldCheck },
+      { label: 'قوالب', path: '/products?category=Templates', icon: LayoutTemplate },
+      { label: 'تصميم', path: '/products?category=Design', icon: Palette },
+    ]
+  },
+  {
+    label: 'من نحن',
+    path: '/about',
+    icon: Info,
+    children: [
+      { label: 'عن المنصة', path: '/about', icon: Building2 },
+      { label: 'الشروط والأحكام', path: '/terms', icon: FileText },
+      { label: 'سياسة الخصوصية', path: '/privacy', icon: Lock },
+    ]
+  },
+  { 
+    label: 'تواصل معنا', 
+    path: '/contact', 
+    icon: Phone 
+  },
 ];
